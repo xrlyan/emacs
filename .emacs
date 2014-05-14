@@ -19,6 +19,11 @@
 (setq make-backup-files nil)
 
 
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet-0.6.1c")
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
+(setq yas/trigger-key (kbd "M-["))
 
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1")
 (require 'auto-complete) 
