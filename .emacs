@@ -1,3 +1,6 @@
+;;
+
+
 ;; line no
 (global-linum-mode 1)
 
@@ -13,12 +16,42 @@
 ;; start up with full-screen
 (switch-full-screen)
 
+
 (global-set-key [f1] 'shell)
 
 ;;cancel the *~ back file
 (setq make-backup-files nil)
 
+;;cscope
+(load-file "~/.emacs.d/xcscope.el")
+(require 'xcscope)
+(setq cscope-do-not-update-database t)
 
+
+;;cedet configuration
+(add-to-list 'load-path "~/.emacs.d/cedet-1.1/common")
+(require 'cedet)
+(require 'semantic-ia)
+ 
+;; Enable EDE (Project Management) features
+(global-ede-mode 1)
+ 
+(semantic-load-enable-excessive-code-helpers)
+(semantic-load-enable-semantic-debugging-helpers)
+ 
+;; Enable SRecode (Template management) minor-mode.
+(global-srecode-minor-mode 1)
+
+
+;; ecd configuration
+(add-to-list 'load-path
+                     "~/.emacs.d/ecb-2.40/")
+(load-file "~/.emacs.d/ecb-2.40/ecb.el")
+(require 'ecb)
+
+
+
+;; yasnippet for template
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet-0.6.1c")
 (require 'yasnippet)
 (yas/initialize)
@@ -60,7 +93,6 @@
 (autoload 'pymacs-call "pymacs")
 
 ;;(require 'pycomplete)
-
 
 ;;set ipython as the shell
 (setq ipython-command "/bin/ipython")
@@ -129,3 +161,5 @@
     (setq TeX-show-compilation t)
     ))
 (put 'upcase-region 'disabled nil)
+
+
